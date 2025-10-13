@@ -13,10 +13,10 @@ typedef signed long long    s64;
 typedef float               f32;
 typedef double              f64;
 
-typedef signed int          ssize_t;
+typedef signed long         ssize_t;
 
-typedef unsigned int        uintptr_t;
-typedef signed int          intptr_t;
+typedef unsigned long       uintptr_t;
+typedef signed long         intptr_t;
 
 typedef wchar_t             char16;
 

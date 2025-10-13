@@ -41,7 +41,7 @@ void InitAcquireSys(void) {
     OSDynLoad_Acquire("sysapp.rpl", &sysapp_handle);
 }
 
-void InitSysFunctionPointers(void) {
+extern "C" void InitSysFunctionPointers(void) {
     u32 *funcPointer = 0;
     InitAcquireSys();
 
