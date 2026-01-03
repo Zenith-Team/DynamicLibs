@@ -95,7 +95,7 @@ EXPORT_DECL(s32, OSTryLockMutex, void* mutex);
 EXPORT_DECL(u64, OSGetTitleID, void);
 EXPORT_DECL(void, OSGetArgcArgv, s32* argc, char*** argv);
 EXPORT_DECL(void, __Exit, void);
-EXPORT_DECL(void, OSFatal, const char* msg);
+EXPORT_DECL(void, __attribute__((noreturn)) OSFatal, const char* msg);
 EXPORT_DECL(void, OSReport, const char * format, ...);
 EXPORT_DECL(void, OSConsoleWrite, const char *msg, s32 size);
 EXPORT_DECL(void *, OSSetExceptionCallback, u8 exceptionType, exception_callback newCallback);

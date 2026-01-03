@@ -181,7 +181,7 @@ extern s32 (* OSTryLockMutex)(void* mutex);
 extern u64 (* OSGetTitleID)(void);
 extern void (* OSGetArgcArgv)(s32* argc, char*** argv);
 extern void (* __Exit)(void);
-extern void (* OSFatal)(const char* msg);
+extern void __attribute__((noreturn)) (* OSFatal)(const char* msg);
 extern void (* OSReport)(const char * format, ...);
 extern void (* OSConsoleWrite)(const char *msg, s32 size);
 extern void (* DCFlushRange)(const void *addr, u32 length);
