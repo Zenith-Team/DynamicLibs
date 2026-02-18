@@ -31,19 +31,11 @@
 extern "C" {
 #endif
 
-#if PLATFORM_IS_EMULATOR
-
-#define OS_FIRMWARE                 ((volatile u32)550)
-
-#else
-
 #ifndef MEM_BASE
 #define MEM_BASE                    (0x00800000)
 #endif
 
 #define OS_FIRMWARE                 (*(volatile u32*)(MEM_BASE + 0x1400 + 0x04))
-
-#endif
 
 extern OsSpecifics osSpecifics;
 #define OS_SPECIFICS                ((OsSpecifics*)&osSpecifics)
