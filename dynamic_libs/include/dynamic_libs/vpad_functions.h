@@ -33,6 +33,13 @@ extern "C" {
 extern u32 vpad_handle;
 extern u32 vpadbase_handle;
 
+typedef enum _VPADChan {
+    //! Channel 0.
+    VPAD_CHAN_0 = 0,
+    //! Channel 1.
+    VPAD_CHAN_1 = 1,
+} VPADChan;
+
 #define VPAD_BUTTON_A        0x8000
 #define VPAD_BUTTON_B        0x4000
 #define VPAD_BUTTON_X        0x2000
