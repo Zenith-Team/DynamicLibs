@@ -124,6 +124,10 @@ extern void (*GX2RDestroyBufferEx)(GX2RBuffer * buffer, u32 flags);
 extern void * (*GX2RLockBufferEx)(GX2RBuffer * buffer, u32 flags);
 extern void (*GX2RUnlockBufferEx)(GX2RBuffer * buffer, u32 flags);
 extern void (*GX2RSetAttributeBuffer)(GX2RBuffer * buffer, u32 index, u32 stride, u32 offset);
+extern bool (*GX2RDestroySurfaceEx)(GX2Surface* surface, u32 flags);
+extern bool (*GX2RCreateSurface)(GX2Surface* surface, u32 flags);
+extern void* (*GX2RLockSurfaceEx)(GX2Surface* surface, s32 level, u32 flags);
+extern void (*GX2RUnlockSurfaceEx)(GX2Surface* surface, s32 level, u32 flags);
 
 static inline void GX2InitDepthBuffer(GX2DepthBuffer *depthBuffer, GX2SurfaceDim dimension, u32 width, u32 height, u32 depth, GX2SurfaceFormat format, GX2AAMode aa) {
     depthBuffer->surface.dim = dimension;

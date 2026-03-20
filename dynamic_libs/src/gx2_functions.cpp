@@ -111,6 +111,10 @@ EXPORT_DECL(void, GX2RDestroyBufferEx, GX2RBuffer * buffer, u32 flags);
 EXPORT_DECL(void *, GX2RLockBufferEx, GX2RBuffer * buffer, u32 flags);
 EXPORT_DECL(void, GX2RUnlockBufferEx, GX2RBuffer * buffer, u32 flags);
 EXPORT_DECL(void, GX2RSetAttributeBuffer, GX2RBuffer * buffer, u32 index, u32 stride, u32 offset);
+EXPORT_DECL(bool, GX2RDestroySurfaceEx, GX2Surface* surface, u32 flags);
+EXPORT_DECL(bool, GX2RCreateSurface, GX2Surface* surface, u32 flags);
+EXPORT_DECL(void*, GX2RLockSurfaceEx, GX2Surface* surface, s32 level, u32 flags);
+EXPORT_DECL(void, GX2RUnlockSurfaceEx, GX2Surface* surface, s32 level, u32 flags);
 
 EXPORT_DECL(void, GX2ClearBuffersEx, GX2ColorBuffer * colorBuffer,GX2DepthBuffer * depthBuffer,f32 r, f32 g, f32 b, f32 a,f32 depthValue,u8 stencilValue,s32 clearFlags);
 
@@ -208,4 +212,8 @@ extern "C" void InitGX2FunctionPointers(void) {
     OS_FIND_EXPORT(gx2_handle, GX2RLockBufferEx);
     OS_FIND_EXPORT(gx2_handle, GX2RUnlockBufferEx);
     OS_FIND_EXPORT(gx2_handle, GX2RSetAttributeBuffer);
+    OS_FIND_EXPORT(gx2_handle, GX2RDestroySurfaceEx);
+    OS_FIND_EXPORT(gx2_handle, GX2RCreateSurface);
+    OS_FIND_EXPORT(gx2_handle, GX2RLockSurfaceEx);
+    OS_FIND_EXPORT(gx2_handle, GX2RUnlockSurfaceEx);
 }

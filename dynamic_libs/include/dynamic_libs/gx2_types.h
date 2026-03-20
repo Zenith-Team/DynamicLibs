@@ -316,6 +316,25 @@ typedef enum _GX2ShaderMode
 #define GX2_COMP_SEL_WZYX                               0x03020100
 #define GX2_COMP_SEL_WXYZ                               0x03000102
 
+typedef enum _GX2_SQ_SEL {
+    GX2_SQ_SEL_X = 0,
+    GX2_SQ_SEL_Y = 1,
+    GX2_SQ_SEL_Z = 2,
+    GX2_SQ_SEL_W = 3,
+
+    GX2_SQ_SEL_R = 0,
+    GX2_SQ_SEL_G = 1,
+    GX2_SQ_SEL_B = 2,
+    GX2_SQ_SEL_A = 3,
+
+    GX2_SQ_SEL_0 = 4,
+    GX2_SQ_SEL_1 = 5,
+    GX2_SQ_SEL_MASK = 7,
+} GX2_SQ_SEL;
+
+#define GX2_SEL_MASK(x, y, z, w) (((x) << 24) | ((y) << 16) | ((z) << 8) | (w))
+#define GX2_COMP_MAP(x, y, z, w) (((x) << 24) | ((y) << 16) | ((z) << 8) | (w))
+
 //!-----------------------------------------------------------------------------------------------------------------------
 //! GX2 variable types
 //!-----------------------------------------------------------------------------------------------------------------------
@@ -648,6 +667,7 @@ typedef enum _GX2FetchShaderType
 //!-----------------------------------------------------------------------------------------------------------------------
 //! GX2R resource flags
 //!-----------------------------------------------------------------------------------------------------------------------
+#define GX2R_RESOURCE_BIND_NONE 0
 #define GX2R_RESOURCE_BIND_TEXTURE                      1 << 0
 #define GX2R_RESOURCE_BIND_COLOR_BUFFER                 1 << 1
 #define GX2R_RESOURCE_BIND_DEPTH_BUFFER                 1 << 2
