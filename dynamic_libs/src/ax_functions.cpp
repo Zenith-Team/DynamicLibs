@@ -55,20 +55,17 @@ void InitAcquireAX(void) {
     };
     u32 *funcPointer = 0;
 
-    if(OS_FIRMWARE >= 400) {
-        AXInit = 0;
+    OSDynLoad_Acquire("snd_core.rpl", &sound_handle_old);
+    OSDynLoad_Acquire("sndcore2.rpl", &sound_handle);
 
-        OSDynLoad_Acquire("snd_core.rpl", &sound_handle_old);
-        OSDynLoad_Acquire("sndcore2.rpl", &sound_handle);
+    if (sound_handle != 0)
+    {
         OS_FIND_EXPORT(sound_handle, AXInitWithParams);
         OS_FIND_EXPORT(sound_handle, AXGetInputSamplesPerSec);
-    } else {
-        AXInitWithParams = 0;
-        AXGetInputSamplesPerSec = 0;
-
-        OSDynLoad_Acquire("snd_core.rpl", &sound_handle);
-        sound_handle_old = sound_handle;
-        OS_FIND_EXPORT(sound_handle, AXInit);
+    }
+    else
+    {
+        sound_handle = sound_handle_old;
     }
 }
 
@@ -77,6 +74,7 @@ void InitAXFunctionPointers(void) {
 
     InitAcquireAX();
 
+    OS_FIND_EXPORT(sound_handle, AXInit);
     OS_FIND_EXPORT(sound_handle, AXQuit);
     OS_FIND_EXPORT(sound_handle, AXVoiceBegin);
     OS_FIND_EXPORT(sound_handle, AXVoiceEnd);

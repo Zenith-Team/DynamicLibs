@@ -31,12 +31,6 @@
 extern "C" {
 #endif
 
-#ifndef MEM_BASE
-#define MEM_BASE                    (0x00800000)
-#endif
-
-#define OS_FIRMWARE                 (*(volatile u32*)(MEM_BASE + 0x1400 + 0x04))
-
 extern OsSpecifics osSpecifics;
 #define OS_SPECIFICS                ((OsSpecifics*)&osSpecifics)
 
