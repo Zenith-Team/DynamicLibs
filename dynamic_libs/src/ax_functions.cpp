@@ -102,12 +102,12 @@ void ProperlyEndTransitionAudio(void) {
     void (* AXQuit_old)(void);
 
     u32 *funcPointer = 0;
-    u32 sound_handle;
-    OSDynLoad_Acquire("snd_core.rpl", &sound_handle);
+    u32 sound_handle_old_local;
+    OSDynLoad_Acquire("snd_core.rpl", &sound_handle_old_local);
 
-    OS_FIND_EXPORT_EX(sound_handle, check_os_audio_transition_flag, check_os_audio_transition_flag_old);
-    OS_FIND_EXPORT_EX(sound_handle, AXInit, AXInit_old);
-    OS_FIND_EXPORT_EX(sound_handle, AXQuit, AXQuit_old);
+    OS_FIND_EXPORT_EX(sound_handle_old_local, check_os_audio_transition_flag, check_os_audio_transition_flag_old);
+    OS_FIND_EXPORT_EX(sound_handle_old_local, AXInit, AXInit_old);
+    OS_FIND_EXPORT_EX(sound_handle_old_local, AXQuit, AXQuit_old);
 
     if (check_os_audio_transition_flag_old()) {
         AXInit_old();
