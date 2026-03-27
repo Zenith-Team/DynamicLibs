@@ -162,6 +162,30 @@ EXPORT_DECL(void *, OSBlockSet, void *dst, u8 value, size_t n);
 
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//! Atomics functions
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+EXPORT_DECL(u32, OSSwapAtomic, volatile OSAtomicVar* ptr, u32 val)
+EXPORT_DECL(s32, OSAddAtomic, volatile OSAtomicVar* ptr, s32 val)
+EXPORT_DECL(u32, OSAndAtomic, volatile OSAtomicVar* ptr, u32 mask)
+EXPORT_DECL(u32, OSOrAtomic, volatile OSAtomicVar* ptr, u32 mask)
+EXPORT_DECL(u32, OSXorAtomic, volatile OSAtomicVar* ptr, u32 mask)
+EXPORT_DECL(bool, OSTestAndSetAtomic, volatile OSAtomicVar* ptr, u32 bitnum)
+EXPORT_DECL(bool, OSTestAndClearAtomic, volatile OSAtomicVar* ptr, u32 bitnum)
+EXPORT_DECL(bool, OSCompareAndSwapAtomic, volatile OSAtomicVar* ptr, u32 cmpval, u32 newval)
+EXPORT_DECL(bool, OSCompareAndSwapAtomicEx, volatile OSAtomicVar* ptr, u32 cmpval, u32 newval, u32* oldval)
+EXPORT_DECL(u64, OSGetAtomic64, volatile OSAtomicVar64* ptr)
+EXPORT_DECL(u64, OSSetAtomic64, volatile OSAtomicVar64* ptr, u64 val)
+EXPORT_DECL(s64, OSAddAtomic64, volatile OSAtomicVar64* ptr, s64 val)
+EXPORT_DECL(u64, OSOrAtomic64, volatile OSAtomicVar64* ptr, u64 mask)
+EXPORT_DECL(u64, OSAndAtomic64, volatile OSAtomicVar64* ptr, u64 mask)
+EXPORT_DECL(u64, OSXorAtomic64, volatile OSAtomicVar64* ptr, u64 mask)
+EXPORT_DECL(u64, OSSwapAtomic64, volatile OSAtomicVar64* ptr, u64 val)
+EXPORT_DECL(bool, OSCompareAndSwapAtomic64, volatile OSAtomicVar64* ptr, u64 cmpval, u64 newval)
+EXPORT_DECL(bool, OSCompareAndSwapAtomicEx64, volatile OSAtomicVar64* ptr, u64 cmpval, u64 newval, u64* oldval)
+EXPORT_DECL(bool, OSTestAndSetAtomic64, volatile OSAtomicVar64* ptr, u32 bitnum)
+EXPORT_DECL(bool, OSTestAndClearAtomic64, volatile OSAtomicVar64* ptr, u32 bitnum)
+
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! MCP functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 EXPORT_DECL(s32, MCP_Open, void);
@@ -399,6 +423,30 @@ void InitOSFunctionPointers(void) {
     OS_FIND_EXPORT(coreinit_handle, OSBlockMove);
     OS_FIND_EXPORT(coreinit_handle, OSBlockSet);
 
+    //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //! Atomics functions
+    //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    OS_FIND_EXPORT(coreinit_handle, OSSwapAtomic);
+    OS_FIND_EXPORT(coreinit_handle, OSAddAtomic);
+    OS_FIND_EXPORT(coreinit_handle, OSAndAtomic);
+    OS_FIND_EXPORT(coreinit_handle, OSOrAtomic);
+    OS_FIND_EXPORT(coreinit_handle, OSXorAtomic);
+    OS_FIND_EXPORT(coreinit_handle, OSTestAndSetAtomic);
+    OS_FIND_EXPORT(coreinit_handle, OSTestAndClearAtomic);
+    OS_FIND_EXPORT(coreinit_handle, OSCompareAndSwapAtomic);
+    OS_FIND_EXPORT(coreinit_handle, OSCompareAndSwapAtomicEx);
+    OS_FIND_EXPORT(coreinit_handle, OSGetAtomic64);
+    OS_FIND_EXPORT(coreinit_handle, OSSetAtomic64);
+    OS_FIND_EXPORT(coreinit_handle, OSAddAtomic64);
+    OS_FIND_EXPORT(coreinit_handle, OSOrAtomic64);
+    OS_FIND_EXPORT(coreinit_handle, OSAndAtomic64);
+    OS_FIND_EXPORT(coreinit_handle, OSXorAtomic64);
+    OS_FIND_EXPORT(coreinit_handle, OSSwapAtomic64);
+    OS_FIND_EXPORT(coreinit_handle, OSCompareAndSwapAtomic64);
+    OS_FIND_EXPORT(coreinit_handle, OSCompareAndSwapAtomicEx64);
+    OS_FIND_EXPORT(coreinit_handle, OSTestAndSetAtomic64);
+    OS_FIND_EXPORT(coreinit_handle, OSTestAndClearAtomic64);
+    
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Other function addresses
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------

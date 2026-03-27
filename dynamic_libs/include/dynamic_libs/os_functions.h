@@ -238,6 +238,35 @@ extern void* (* OSBlockMove)(void *dst, const void *src, size_t n, u32 flush);
 extern void* (* OSBlockSet)(void *dst, u8 value, size_t n);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//! Atomics functions
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+extern u32 (*OSSwapAtomic)(volatile OSAtomicVar* ptr, u32 val);
+extern s32 (*OSAddAtomic)(volatile OSAtomicVar* ptr, s32 val);
+extern u32 (*OSAndAtomic)(volatile OSAtomicVar* ptr, u32 mask);
+extern u32 (*OSOrAtomic)(volatile OSAtomicVar* ptr, u32 mask);
+extern u32 (*OSXorAtomic)(volatile OSAtomicVar* ptr, u32 mask);
+extern bool (*OSTestAndSetAtomic)(volatile OSAtomicVar* ptr, u32 bitnum);
+extern bool (*OSTestAndClearAtomic)(volatile OSAtomicVar* ptr, u32 bitnum);
+extern bool (*OSCompareAndSwapAtomic)(volatile OSAtomicVar* ptr, u32 cmpval, u32 newval);
+extern bool (*OSCompareAndSwapAtomicEx)(volatile OSAtomicVar* ptr, u32 cmpval, u32 newval, u32* oldval);
+#define OSIncAtomic(ptr) OSAddAtomic(ptr, 1)
+#define OSDecAtomic(ptr) OSAddAtomic(ptr, -1)
+
+extern u64 (*OSGetAtomic64)(volatile OSAtomicVar64* ptr);
+extern u64 (*OSSetAtomic64)(volatile OSAtomicVar64* ptr, u64 val);
+extern s64 (*OSAddAtomic64)(volatile OSAtomicVar64* ptr, s64 val);
+extern u64 (*OSOrAtomic64)(volatile OSAtomicVar64* ptr, u64 mask);
+extern u64 (*OSAndAtomic64)(volatile OSAtomicVar64* ptr, u64 mask);
+extern u64 (*OSXorAtomic64)(volatile OSAtomicVar64* ptr, u64 mask);
+extern u64 (*OSSwapAtomic64)(volatile OSAtomicVar64* ptr, u64 val);
+extern bool (*OSCompareAndSwapAtomic64)(volatile OSAtomicVar64* ptr, u64 cmpval, u64 newval);
+extern bool (*OSCompareAndSwapAtomicEx64)(volatile OSAtomicVar64* ptr, u64 cmpval, u64 newval, u64* oldval);
+extern bool (*OSTestAndSetAtomic64)(volatile OSAtomicVar64* ptr, u32 bitnum);
+extern bool (*OSTestAndClearAtomic64)(volatile OSAtomicVar64* ptr, u32 bitnum);
+#define OSIncAtomic64(ptr) OSAddAtomic64(ptr, 1)
+#define OSDecAtomic64(ptr) OSAddAtomic64(ptr, -1)
+
+//!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! MCP functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 extern s32 (* MCP_Open)(void);

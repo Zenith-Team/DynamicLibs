@@ -237,6 +237,21 @@ typedef struct OSEvent_ {
     s32 mode;
 } OSEvent;
 
+typedef struct OSAtomicVar {
+    union {
+        u32 u32;
+        s32 s32;
+        void* ptr32;
+    } u;
+} OSAtomicVar;
+
+typedef struct OSAtomicVar64 {
+    union {
+        u64 u64;
+        s64 s64;
+    } u;
+} OSAtomicVar64;
+
 typedef struct MCPTitleListType {
     u64 titleId;
     u8 unknwn[4];
