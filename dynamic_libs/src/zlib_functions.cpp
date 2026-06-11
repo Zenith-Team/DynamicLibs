@@ -20,6 +20,13 @@ EXPORT_DECL(int, inflateBackInit_, z_streamp strm, int windowBits,
                                    const char *version,
                                    int stream_size);
 
+EXPORT_DECL(int, compress, Bytef *dest, uLongf *destLen, 
+                        const Bytef *source, uLong sourceLen);
+EXPORT_DECL(int, compress2, Bytef *dest, uLongf *destLen, 
+                        const Bytef *source, uLong sourceLen, int level);
+EXPORT_DECL(int, uncompress, Bytef *dest, uLongf *destLen,
+                             const Bytef *source, uLong sourceLen);
+
 void InitAcquireZlib(void) {
     if(coreinit_handle == 0) {
         InitAcquireOS();
@@ -38,4 +45,7 @@ extern "C" void InitZlibFunctionPointers(void) {
     OS_FIND_EXPORT(zlib_handle, deflateInit2_);
     OS_FIND_EXPORT(zlib_handle, inflateInit2_);
     OS_FIND_EXPORT(zlib_handle, inflateBackInit_);
+    OS_FIND_EXPORT(zlib_handle, compress);
+    OS_FIND_EXPORT(zlib_handle, compress2);
+    OS_FIND_EXPORT(zlib_handle, uncompress);
 }
