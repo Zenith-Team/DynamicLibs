@@ -30,6 +30,13 @@ extern int (*inflateBackInit_)(z_streamp strm, int windowBits,
                                const char *version,
                                int stream_size);
 
+extern int (*compress)(Bytef *dest, uLongf *destLen, 
+                        const Bytef *source, uLong sourceLen);
+extern int (*compress2)(Bytef *dest, uLongf *destLen, 
+                        const Bytef *source, uLong sourceLen, int level);
+extern int (*uncompress)(Bytef *dest, uLongf *destLen,
+                             const Bytef *source, uLong sourceLen);
+
 #define deflateInit(strm, level) \
         deflateInit_((strm), (level),       ZLIB_VERSION, sizeof(z_stream))
 #define inflateInit(strm) \

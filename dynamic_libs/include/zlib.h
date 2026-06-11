@@ -1101,9 +1101,10 @@ ZEXTERN uLong ZEXPORT zlibCompileFlags OF((void));
    you need special options.
 */
 
+/*
 ZEXTERN int ZEXPORT compress OF((Bytef *dest,   uLongf *destLen,
                                  const Bytef *source, uLong sourceLen));
-/*
+
      Compresses the source buffer into the destination buffer.  sourceLen is
    the byte length of the source buffer.  Upon entry, destLen is the total size
    of the destination buffer, which must be at least the value returned by
@@ -1115,10 +1116,11 @@ ZEXTERN int ZEXPORT compress OF((Bytef *dest,   uLongf *destLen,
    buffer.
 */
 
+/*
 ZEXTERN int ZEXPORT compress2 OF((Bytef *dest,   uLongf *destLen,
                                   const Bytef *source, uLong sourceLen,
                                   int level));
-/*
+
      Compresses the source buffer into the destination buffer.  The level
    parameter has the same meaning as in deflateInit.  sourceLen is the byte
    length of the source buffer.  Upon entry, destLen is the total size of the
@@ -1138,9 +1140,10 @@ ZEXTERN uLong ZEXPORT compressBound OF((uLong sourceLen));
    compress() or compress2() call to allocate the destination buffer.
 */
 
+/*
 ZEXTERN int ZEXPORT uncompress OF((Bytef *dest,   uLongf *destLen,
                                    const Bytef *source, uLong sourceLen));
-/*
+
      Decompresses the source buffer into the destination buffer.  sourceLen is
    the byte length of the source buffer.  Upon entry, destLen is the total size
    of the destination buffer, which must be large enough to hold the entire
