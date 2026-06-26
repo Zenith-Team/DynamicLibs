@@ -36,6 +36,12 @@ void ASM_VECSubtract(const Vec* a, const Vec* b, Vec* o);
 void ASM_MTXMultVec(MTX a, const Vec* b, Vec* o);
 void ASM_MTXMultVecSR(MTX a, const Vec* b, Vec* o);
 
+typedef struct {
+	f32 x, y, z, w;
+} Quaternion;
+
+void C_QUATSlerp(const Quaternion* p, const Quaternion* q, Quaternion* r, f32 t);
+
 #ifdef __cplusplus
 }
 #endif // __cplusplus
