@@ -1,3 +1,6 @@
+#ifndef __MTXVEC_FUNCTIONS_H_
+#define __MTXVEC_FUNCTIONS_H_
+
 #ifdef __cplusplus
 extern "C"
 {
@@ -45,3 +48,5 @@ void C_QUATSlerp(const Quaternion* p, const Quaternion* q, Quaternion* r, f32 t)
 #ifdef __cplusplus
 }
 #endif // __cplusplus
+
+#endif // __MTXVEC_FUNCTIONS_H
