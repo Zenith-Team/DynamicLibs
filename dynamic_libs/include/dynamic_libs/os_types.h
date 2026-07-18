@@ -252,6 +252,22 @@ typedef struct OSAtomicVar64 {
     } u;
 } OSAtomicVar64;
 
+typedef struct OSDynLoad_NotifyData {
+   char *name;
+
+   u32 textAddr;
+   u32 textOffset;
+   u32 textSize;
+
+   u32 dataAddr;
+   u32 dataOffset;
+   u32 dataSize;
+
+   u32 readAddr;
+   u32 readOffset;
+   u32 readSize;
+} OSDynLoad_NotifyData;
+
 typedef struct MCPTitleListType {
     u64 titleId;
     u8 unknwn[4];

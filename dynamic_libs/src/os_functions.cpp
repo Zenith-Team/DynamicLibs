@@ -35,6 +35,10 @@ EXPORT_DECL(s32, OSDynLoad_FindExport, u32 handle, s32 isdata, const char *symbo
 
 EXPORT_DECL(void, OSDynLoad_Release, u32 handle);
 
+EXPORT_DECL(s32, OSDynLoad_GetNumberOfRPLs, void);
+EXPORT_DECL(s32, OSDynLoad_GetRPLInfo, u32 first, u32 count, OSDynLoad_NotifyData *outInfos);
+EXPORT_DECL(s32, OSDynLoad_IsModuleLoaded, const char* name, u32 **outModule);
+
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Security functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -290,6 +294,10 @@ void InitOSFunctionPointers(void) {
     InitAcquireOS();
 
     OS_FIND_EXPORT(coreinit_handle, OSDynLoad_Release);
+
+    OS_FIND_EXPORT(coreinit_handle, OSDynLoad_GetNumberOfRPLs);
+    OS_FIND_EXPORT(coreinit_handle, OSDynLoad_GetRPLInfo);
+    OS_FIND_EXPORT(coreinit_handle, OSDynLoad_IsModuleLoaded);
 
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Security functions
