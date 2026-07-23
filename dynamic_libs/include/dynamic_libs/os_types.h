@@ -268,6 +268,11 @@ typedef struct OSDynLoad_NotifyData {
    u32 readSize;
 } OSDynLoad_NotifyData;
 
+typedef enum OSDynLoad_NotifyReason {
+   OS_DYNLOAD_NOTIFY_UNLOADED = 0,
+   OS_DYNLOAD_NOTIFY_LOADED   = 1
+} OSDynLoad_NotifyReason;
+
 typedef struct MCPTitleListType {
     u64 titleId;
     u8 unknwn[4];
