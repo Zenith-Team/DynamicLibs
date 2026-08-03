@@ -8,21 +8,21 @@ extern "C"
 
 #include "os_types.h"
 
-typedef f32 MTX[3][4];
-typedef f32 MTX44[3][4];
+typedef f32 Mtx[3][4];
+typedef f32 Mtx44[4][4];
 
-void ASM_MTXConcat(MTX a, MTX b, MTX o);
-void ASM_MTXCopy(MTX n, MTX o);
-void ASM_MTXIdentity(MTX o);
-u32  ASM_MTXInverse(MTX n, MTX o);
-void ASM_MTXScale(MTX o, f32 x, f32 y, f32 z);
-void ASM_MTXScaleApply(MTX a, MTX b, f32 x, f32 y, f32 z);
-void ASM_MTXTrans(MTX o, f32 x, f32 y, f32 z);
-void ASM_MTXTransApply(MTX n, MTX o, f32 x, f32 y, f32 z);
-void ASM_MTXTranspose(MTX n, MTX o);
-void ASM_MTX44Concat(MTX44 a, MTX44 b, MTX44 o);
-void ASM_MTX44Copy(MTX44 n, MTX44 o);
-void ASM_MTX44Identity(MTX44 o);
+void ASM_MTXConcat(Mtx a, Mtx b, Mtx o);
+void ASM_MTXCopy(Mtx n, Mtx o);
+void ASM_MTXIdentity(Mtx o);
+u32  ASM_MTXInverse(Mtx n, Mtx o);
+void ASM_MTXScale(Mtx o, f32 x, f32 y, f32 z);
+void ASM_MTXScaleApply(Mtx a, Mtx b, f32 x, f32 y, f32 z);
+void ASM_MTXTrans(Mtx o, f32 x, f32 y, f32 z);
+void ASM_MTXTransApply(Mtx n, Mtx o, f32 x, f32 y, f32 z);
+void ASM_MTXTranspose(Mtx n, Mtx o);
+void ASM_MTX44Concat(Mtx44 a, Mtx44 b, Mtx44 o);
+void ASM_MTX44Copy(Mtx44 n, Mtx44 o);
+void ASM_MTX44Identity(Mtx44 o);
 
 typedef f32 Vec[3];
 
@@ -36,8 +36,8 @@ f32  ASM_VECSquareDistance(const Vec* a, const Vec* b);
 f32  ASM_VECSquareMag(const Vec* v);
 void ASM_VECSubtract(const Vec* a, const Vec* b, Vec* o);
 
-void ASM_MTXMultVec(MTX a, const Vec* b, Vec* o);
-void ASM_MTXMultVecSR(MTX a, const Vec* b, Vec* o);
+void ASM_MTXMultVec(Mtx a, const Vec* b, Vec* o);
+void ASM_MTXMultVecSR(Mtx a, const Vec* b, Vec* o);
 
 typedef struct {
 	f32 x, y, z, w;
