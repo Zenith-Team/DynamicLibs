@@ -111,8 +111,9 @@ extern s32 (* OSDynLoad_DelNotifyCallback)(OSDynLoadNotifyFunc notifyFn, void *u
 extern s32 (* OSDynLoad_GetNumberOfRPLs)(void);
 extern s32 (* OSDynLoad_GetRPLInfo)(u32 first, u32 count, OSDynLoad_NotifyData *outInfos);
 extern s32 (* OSDynLoad_IsModuleLoaded)(const char* name, u32 **outModule);
-extern s32 (* OSDynLoad_GetAllocator)(OSDynLoadAllocFn allocFn, OSDynLoadFreeFn freeFn);
-extern s32 (* OSDynLoad_SetAllocator)(OSDynLoadAllocFn *outAllocFn, OSDynLoadFreeFn *outFreeFn);
+extern s32 (* OSDynLoad_GetAllocator)(OSDynLoadAllocFn *outAllocFn, OSDynLoadFreeFn *outFreeFn);
+extern s32 (* OSDynLoad_SetAllocator)(OSDynLoadAllocFn allocFn, OSDynLoadFreeFn freeFn);
+
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Security functions
