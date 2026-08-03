@@ -40,8 +40,9 @@ EXPORT_DECL(s32, OSDynLoad_DelNotifyCallback, OSDynLoadNotifyFunc notifyFn, void
 EXPORT_DECL(s32, OSDynLoad_GetNumberOfRPLs, void);
 EXPORT_DECL(s32, OSDynLoad_GetRPLInfo, u32 first, u32 count, OSDynLoad_NotifyData *outInfos);
 EXPORT_DECL(s32, OSDynLoad_IsModuleLoaded, const char* name, u32 **outModule);
-EXPORT_DECL(s32, OSDynLoad_GetAllocator, OSDynLoadAllocFn allocFn, OSDynLoadFreeFn freeFn);
-EXPORT_DECL(s32, OSDynLoad_SetAllocator, OSDynLoadAllocFn *outAllocFn, OSDynLoadFreeFn *outFreeFn);
+EXPORT_DECL(s32, OSDynLoad_GetAllocator, OSDynLoadAllocFn *outAllocFn, OSDynLoadFreeFn *outFreeFn);
+EXPORT_DECL(s32, OSDynLoad_SetAllocator, OSDynLoadAllocFn allocFn, OSDynLoadFreeFn freeFn);
+
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Security functions
