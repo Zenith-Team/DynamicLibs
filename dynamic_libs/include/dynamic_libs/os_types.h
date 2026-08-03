@@ -273,6 +273,11 @@ typedef enum OSDynLoad_NotifyReason {
    OS_DYNLOAD_NOTIFY_LOADED   = 1
 } OSDynLoad_NotifyReason;
 
+typedef void (*OSDynLoadNotifyFunc)(u32 module, void *userContext, OSDynLoad_NotifyReason notifyReason, OSDynLoad_NotifyData *infos);
+
+typedef s32 (*OSDynLoadAllocFn)(int32_t size, int32_t align, void **outAddr);
+typedef void (*OSDynLoadFreeFn)(void *addr);
+
 typedef struct MCPTitleListType {
     u64 titleId;
     u8 unknwn[4];

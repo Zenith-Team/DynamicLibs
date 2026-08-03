@@ -102,7 +102,6 @@ extern void InitOSFunctionPointers(void);
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Lib handle functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-typedef void (*OSDynLoadNotifyFunc)(u32 module, void *userContext, OSDynLoad_NotifyReason notifyReason, OSDynLoad_NotifyData *infos);
 
 extern s32 (* OSDynLoad_Acquire)(const char* rpl, u32 *handle);
 extern s32 (* OSDynLoad_FindExport)(u32 handle, s32 isdata, const char *symbol, void *address);
@@ -112,6 +111,8 @@ extern s32 (* OSDynLoad_DelNotifyCallback)(OSDynLoadNotifyFunc notifyFn, void *u
 extern s32 (* OSDynLoad_GetNumberOfRPLs)(void);
 extern s32 (* OSDynLoad_GetRPLInfo)(u32 first, u32 count, OSDynLoad_NotifyData *outInfos);
 extern s32 (* OSDynLoad_IsModuleLoaded)(const char* name, u32 **outModule);
+extern s32 (* OSDynLoad_GetAllocator)(OSDynLoadAllocFn allocFn, OSDynLoadFreeFn freeFn);
+extern s32 (* OSDynLoad_SetAllocator)(OSDynLoadAllocFn *outAllocFn, OSDynLoadFreeFn *outFreeFn);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Security functions
