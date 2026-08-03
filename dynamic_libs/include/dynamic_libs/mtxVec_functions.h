@@ -45,6 +45,39 @@ typedef struct {
 
 void C_QUATSlerp(const Quaternion* p, const Quaternion* q, Quaternion* r, f32 t);
 
+typedef struct _Mat34
+{
+    union
+    {
+        struct 
+        {
+            f32 _00, _01, _02, _03;
+            f32 _10, _11, _12, _13;
+            f32 _20, _21, _22, _23;
+        };
+        f32 m[3][4];
+        f32 a[12];
+        Mtx mtx;
+    };
+} Mat34;
+
+typedef struct _Mat44
+{
+    union
+    {
+        struct 
+        {
+            f32 _00, _01, _02, _03;
+            f32 _10, _11, _12, _13;
+            f32 _20, _21, _22, _23;
+            f32 _30, _31, _32, _33;
+        };
+        f32 m[4][4];
+        f32 a[16];
+        Mtx44 mtx;
+    };
+} Mat44;
+
 #ifdef __cplusplus
 }
 #endif // __cplusplus
