@@ -30,6 +30,16 @@ extern "C" {
 
 #include "os_types.h"
 
+typedef s32 SAVEStatus;
+
+#define SAVE_STATUS_OK               FS_STATUS_OK
+#define SAVE_STATUS_NOT_FOUND        FS_STATUS_NOT_FOUND
+#define SAVE_STATUS_DEVICE_FULL      FS_STATUS_STORAGE_FULL
+#define SAVE_STATUS_STORAGE_FULL     FS_STATUS_STORAGE_FULL
+#define SAVE_STATUS_FATAL_ERROR      FS_STATUS_FATAL_ERROR
+
+#define SAVE_STATUS_BUFFER_TOO_SHORT (FS_STATUS_FATAL_ERROR - 1)
+
 extern u32 nn_save_handle;
 
 extern void(*SAVEInit)(void);
