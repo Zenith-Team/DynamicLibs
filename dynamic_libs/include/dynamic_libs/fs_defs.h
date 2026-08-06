@@ -14,10 +14,43 @@ extern "C" {
 #define FS_MAX_ARGPATH_SIZE             FS_MAX_FULLPATH_SIZE
 
 #define FS_STATUS_OK                    0
-#define FS_STATUS_EOF                   -2
+#define FS_STATUS_CANCELED              -1
+#define FS_STATUS_END                   -2
+#define FS_STATUS_MAX                   -3
+#define FS_STATUS_ALREADY_OPEN          -4
+#define FS_STATUS_EXISTS                -5
+#define FS_STATUS_NOT_FOUND             -6
+#define FS_STATUS_NOT_FILE              -7
+#define FS_STATUS_NOT_DIR               -8
+#define FS_STATUS_ACCESS_ERROR          -9
+#define FS_STATUS_PERMISSION_ERROR      -10
+#define FS_STATUS_FILE_TOO_BIG          -11
+#define FS_STATUS_STORAGE_FULL          -12
+#define FS_STATUS_JOURNAL_FULL          -13
+#define FS_STATUS_UNSUPPORTED_CMD       -14
+#define FS_STATUS_MEDIA_NOT_READY       -15
+#define FS_STATUS_INVALID_MEDIA         -16
+#define FS_STATUS_MEDIA_ERROR           -17
+#define FS_STATUS_DATA_CORRUPTED        -18
+#define FS_STATUS_WRITE_PROTECTED       -19
+
 #define FS_STATUS_FATAL_ERROR           -0x400
-#define FS_RET_UNSUPPORTED_CMD          0x0400
+
+#define FS_STATUS_CANCELLED             FS_STATUS_CANCELED
+
 #define FS_RET_NO_ERROR                 0x0000
+#define FS_RET_MAX                      0x0001
+#define FS_RET_ALREADY_OPEN             0x0002
+#define FS_RET_EXISTS                   0x0004
+#define FS_RET_NOT_FOUND                0x0008
+#define FS_RET_NOT_FILE                 0x0010
+#define FS_RET_NOT_DIR                  0x0020
+#define FS_RET_ACCESS_ERROR             0x0040
+#define FS_RET_PERMISSION_ERROR         0x0080
+#define FS_RET_FILE_TOO_BIG             0x0100
+#define FS_RET_STORAGE_FULL             0x0200
+#define FS_RET_UNSUPPORTED_CMD          0x0400
+#define FS_RET_JOURNAL_FULL             0x0800
 #define FS_RET_ALL_ERROR                (u32)(-1)
 
 #define FS_IO_BUFFER_ALIGN              64
@@ -98,6 +131,10 @@ typedef s32 FSFileHandle;
 typedef s32 FSDirHandle;
 typedef s32 FSStatus;
 typedef u32 FSRetFlag;
+typedef u32 FSFilePosition;
+typedef u64 FSBSize;
+
+typedef FSBSize FSFreeSpaceSize;
 
 #ifdef __cplusplus
 }
