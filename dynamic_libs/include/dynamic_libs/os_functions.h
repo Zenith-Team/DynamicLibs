@@ -93,6 +93,8 @@ typedef void *(*DisasmGetSym)(u32 addr, u8 *symbolName, u32 nameBufSize);
 
 #define OS_MUTEX_SIZE                   44
 
+#define MAX_ENV_VALUE_SIZE              256
+
 /* Handle for coreinit */
 extern u32 coreinit_handle;
 extern void _os_find_export(u32 handle, const char *funcName, void *funcPointer);
@@ -296,6 +298,7 @@ extern s32 (*OSDynLoad_GetModuleName)(s32 handle, char *name_buffer, s32 *name_b
 extern s32 (*OSIsHomeButtonMenuEnabled) (void);
 extern void (*OSEnableHomeButtonMenu) (s32);
 extern s32 (*OSSetScreenCapturePermissionEx) (s32 tvEnabled, s32 drcEnabled);
+extern s32 (*ENVGetEnvironmentVariable)(const char *key, char *valueBuf, u32 valueBufSize);
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Energy Saver functions

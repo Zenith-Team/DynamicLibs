@@ -227,6 +227,7 @@ EXPORT_DECL(s32, OSDynLoad_GetModuleName, s32 handle, char *name_buffer, s32 *na
 EXPORT_DECL(s32, OSIsHomeButtonMenuEnabled, void);
 EXPORT_DECL(void, OSEnableHomeButtonMenu, s32);
 EXPORT_DECL(s32, OSSetScreenCapturePermissionEx, s32 tvEnabled, s32 drcEnabled);
+EXPORT_DECL(s32, ENVGetEnvironmentVariable, const char *key, char *valueBuf, u32 valueBufSize);
 
 
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -474,6 +475,7 @@ void InitOSFunctionPointers(void) {
     OS_FIND_EXPORT(coreinit_handle, OSIsHomeButtonMenuEnabled);
     OS_FIND_EXPORT(coreinit_handle, OSEnableHomeButtonMenu);
     OS_FIND_EXPORT(coreinit_handle, OSSetScreenCapturePermissionEx);
+    OS_FIND_EXPORT(coreinit_handle, ENVGetEnvironmentVariable);
 
     //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //! Energy Saver functions
