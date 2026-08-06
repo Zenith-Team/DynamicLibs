@@ -29,6 +29,7 @@ extern "C" {
 #endif
 
 #include "os_types.h"
+#include "fs_defs.h"
 
 typedef s32 SAVEStatus;
 
@@ -42,8 +43,26 @@ typedef s32 SAVEStatus;
 
 extern u32 nn_save_handle;
 
-extern void(*SAVEInit)(void);
-extern int(*SAVEOpenFile)(void *pClient, void *pCmd, unsigned char user, const char *path, const char *mode, int *fd, int errHandling);
+extern s32  (* SAVEInit)(void);
+extern void (* SAVEShutdown)(void);
+
+extern s32  (* SAVEInitSaveDir)(u8 user);
+extern s32  (* SAVEChangeDir)(void* pClient, void* pCmd, u8 user, const char* path, s32 errHandling);
+extern s32  (* SAVEChangeDirAsync)(void* pClient, void* pCmd, u8 user, const char* path, s32 errHandling, const FSAsyncParams* asyncParams);
+
+extern s32  (* SAVEOpenFile)(void* pClient, void* pCmd, u8 user, const char* path, const char* mode, s32* fd, s32 errHandling);
+extern s32  (* SAVEOpenFileAsync)(void* pClient, void* pCmd, u8 user, const char* path, const char* mode, s32* fd, s32 errHandling, const FSAsyncParams* asyncParams);
+
+extern s32  (* SAVEOpenDir)(void* pClient, void* pCmd, u8 user, const char* path, s32* dh, s32 errHandling);
+extern s32  (* SAVEOpenDirAsync)(void* pClient, void* pCmd, u8 user, const char* path, s32* dh, s32 errHandling, const FSAsyncParams* asyncParams);
+extern s32  (* SAVEMakeDir)(void* pClient, void* pCmd, u8 user, const char* path, s32 errHandling);
+extern s32  (* SAVEMakeDirAsync)(void* pClient, void* pCmd, u8 user, const char* path, s32 errHandling, const FSAsyncParams* asyncParams);
+
+extern s32  (* SAVERemove)(void* pClient, void* pCmd, u8 user, const char* path, s32 errHandling);
+extern s32  (* SAVERemoveAsync)(void* pClient, void* pCmd, u8 user, const char* path, s32 errHandling, const FSAsyncParams* asyncParams);
+
+extern s32  (* SAVEGetStat)(void* pClient, void* pCmd, u8 user, const char* path, FSStat* stats, s32 errHandling);
+extern s32  (* SAVEGetStatAsync)(void* pClient, void* pCmd, u8 user, const char* path, FSStat* stats, s32 errHandling, const FSAsyncParams* asyncParams);
 
 void InitSaveFunctionPointers(void);
 void InitAcquireSave(void);

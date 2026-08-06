@@ -27,8 +27,26 @@
 u32 nn_save_handle = 0;
 
 
-EXPORT_DECL(void, SAVEInit, void);
-EXPORT_DECL(int, SAVEOpenFile, void *pClient, void *pCmd, unsigned char user, const char *path, const char *mode, int *fd, int errHandling);
+EXPORT_DECL(s32, SAVEInit, void);
+EXPORT_DECL(void, SAVEShutdown, void);
+
+EXPORT_DECL(s32, SAVEInitSaveDir, u8 user);
+EXPORT_DECL(s32, SAVEChangeDir, void* pClient, void* pCmd, u8 user, const char* path, s32 errHandling);
+EXPORT_DECL(s32, SAVEChangeDirAsync, void* pClient, void* pCmd, u8 user, const char* path, s32 errHandling, const FSAsyncParams* asyncParams);
+
+EXPORT_DECL(s32, SAVEOpenFile, void* pClient, void* pCmd, u8 user, const char* path, const char* mode, s32* fd, s32 errHandling);
+EXPORT_DECL(s32, SAVEOpenFileAsync, void* pClient, void* pCmd, u8 user, const char* path, const char* mode, s32* fd, s32 errHandling, const FSAsyncParams* asyncParams);
+
+EXPORT_DECL(s32, SAVEOpenDir, void* pClient, void* pCmd, u8 user, const char* path, s32* dh, s32 errHandling);
+EXPORT_DECL(s32, SAVEOpenDirAsync, void* pClient, void* pCmd, u8 user, const char* path, s32* dh, s32 errHandling, const FSAsyncParams* asyncParams);
+EXPORT_DECL(s32, SAVEMakeDir, void* pClient, void* pCmd, u8 user, const char* path, s32 errHandling);
+EXPORT_DECL(s32, SAVEMakeDirAsync, void* pClient, void* pCmd, u8 user, const char* path, s32 errHandling, const FSAsyncParams* asyncParams);
+
+EXPORT_DECL(s32, SAVERemove, void* pClient, void* pCmd, u8 user, const char* path, s32 errHandling);
+EXPORT_DECL(s32, SAVERemoveAsync, void* pClient, void* pCmd, u8 user, const char* path, s32 errHandling, const FSAsyncParams* asyncParams);
+
+EXPORT_DECL(s32, SAVEGetStat, void* pClient, void* pCmd, u8 user, const char* path, FSStat* stats, s32 errHandling);
+EXPORT_DECL(s32, SAVEGetStatAsync, void* pClient, void* pCmd, u8 user, const char* path, FSStat* stats, s32 errHandling, const FSAsyncParams* asyncParams);
 
 void InitAcquireSave(void) {
     if(coreinit_handle == 0) {
@@ -40,6 +58,25 @@ void InitAcquireSave(void) {
 void InitSaveFunctionPointers(void) {
     u32 *funcPointer = 0;
     InitAcquireSave();
+
     OS_FIND_EXPORT(nn_save_handle, SAVEInit);
+    OS_FIND_EXPORT(nn_save_handle, SAVEShutdown);
+
+    OS_FIND_EXPORT(nn_save_handle, SAVEInitSaveDir);
+    OS_FIND_EXPORT(nn_save_handle, SAVEChangeDir);
+    OS_FIND_EXPORT(nn_save_handle, SAVEChangeDirAsync);
+
     OS_FIND_EXPORT(nn_save_handle, SAVEOpenFile);
+    OS_FIND_EXPORT(nn_save_handle, SAVEOpenFileAsync);
+
+    OS_FIND_EXPORT(nn_save_handle, SAVEOpenDir);
+    OS_FIND_EXPORT(nn_save_handle, SAVEOpenDirAsync);
+    OS_FIND_EXPORT(nn_save_handle, SAVEMakeDir);
+    OS_FIND_EXPORT(nn_save_handle, SAVEMakeDirAsync);
+
+    OS_FIND_EXPORT(nn_save_handle, SAVERemove);
+    OS_FIND_EXPORT(nn_save_handle, SAVERemoveAsync);
+
+    OS_FIND_EXPORT(nn_save_handle, SAVEGetStat);
+    OS_FIND_EXPORT(nn_save_handle, SAVEGetStatAsync);
 }
