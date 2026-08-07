@@ -30,6 +30,14 @@ extern "C" {
 
 #include "os_types.h"
 
+#define AX_MAX_VOICES               96
+
+
+#define AX_MS_PER_FRAME         3
+#define AX_IN_SAMPLES_PER_MS    32
+#define AX_IN_SAMPLES_PER_SEC   (AX_IN_SAMPLES_PER_MS * 1000)
+#define AX_IN_SAMPLES_PER_FRAME (AX_IN_SAMPLES_PER_MS * AX_MS_PER_FRAME)
+
 extern u32 sound_handle;
 extern u32 sound_handle_old;
 
