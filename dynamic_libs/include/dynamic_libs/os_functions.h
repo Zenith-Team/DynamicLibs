@@ -126,7 +126,7 @@ extern s32 (* OSForceFullRelaunch)(void);
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Thread functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-extern s32 (* OSCreateThread)(OSThread *thread, s32 (*callback)(s32, void*), s32 argc, void *args, u32 stack, u32 stack_size, s32 priority, u32 attr);
+extern s32 (* OSCreateThread)(OSThread *thread, s32 (*callback)(s32, void*), s32 argc, void* args, void* stack, u32 stack_size, s32 priority, u16 attr);
 
 extern void (*OSEnableInterrupts)(void);
 extern void (*__OSClearAndEnableInterrupt)(void);

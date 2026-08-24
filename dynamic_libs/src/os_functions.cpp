@@ -53,7 +53,7 @@ EXPORT_DECL(s32, OSForceFullRelaunch, void);
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //! Thread functions
 //!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-EXPORT_DECL(s32, OSCreateThread, OSThread *thread, s32 (*callback)(s32, void*), s32 argc, void *args, u32 stack, u32 stack_size, s32 priority, u32 attr);
+EXPORT_DECL(s32, OSCreateThread, OSThread *thread, s32 (*callback)(s32, void*), s32 argc, void* args, void* stack, u32 stack_size, s32 priority, u16 attr);
 
 EXPORT_DECL(void, OSEnableInterrupts, void);
 EXPORT_DECL(void, __OSClearAndEnableInterrupt, void);
